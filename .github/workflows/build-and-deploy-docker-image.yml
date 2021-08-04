@@ -33,6 +33,7 @@ jobs:
           curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
           ibmcloud --version
           ibmcloud config --check-version=false
+          ibmcloud cf install
           ibmcloud plugin install -f container-registry
 
       # Authenticate with IBM Cloud CLI
