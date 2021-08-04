@@ -1,0 +1,11 @@
+applications:
+- name: static-site-template
+  disk_quota: 64M
+  docker:
+    image: icr.io/oolong/static-site-template:0.1.0
+    username: iamapikey
+  instances: 1
+  memory: 64M
+  routes:
+  - route: static-site-template.mybluemix.net
+  stack: cflinuxfs3
