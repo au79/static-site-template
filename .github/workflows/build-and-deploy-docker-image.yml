@@ -15,7 +15,7 @@ env:
   IBM_CLOUD_REGION: ${{ secrets.IBM_CLOUD_REGION }}
   IBM_CLOUD_SPACE: ${{ secrets.IBM_CLOUD_SPACE }}
   ICR_NAMESPACE: ${{ secrets.ICR_NAMESPACE }}
-  REGISTRY_HOSTNAME: us.icr.io
+  REGISTRY_HOSTNAME: icr.io
   IMAGE_NAME: ${{ secrets.DOCKER_IMAGE_NAME }}
 
 
@@ -44,10 +44,13 @@ jobs:
             --build-arg GITHUB_REF="$GITHUB_REF" .
 
       # Authenticate with IBM Cloud CLI, and push the image to IBM Container Registry
-      - name: Authenticate with IBM Cloud CLI and push the Docker image to ICR
+      - name: Authenticate with IBM Cloud CLI
         run: |
           ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" -r "${IBM_CLOUD_REGION}" -g Default
           ibmcloud target -o ${IBM_CLOUD_ORG} -s ${IBM_CLOUD_SPACE} --cf
-          ibmcloud cr region-set "${IBM_CLOUD_REGION}"
           ibmcloud cr login
+
+      # Push the Docker image to the IBM Container Registry
+      - name: Push the Docker image to ICR
+        run: |
           docker push $REGISTRY_HOSTNAME/$ICR_NAMESPACE/$IMAGE_NAME:$GITHUB_SHA
