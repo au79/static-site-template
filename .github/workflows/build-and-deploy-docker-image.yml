@@ -15,7 +15,7 @@ env:
   IBM_CLOUD_REGION: ${{ secrets.IBM_CLOUD_REGION }}
   IBM_CLOUD_SPACE: ${{ secrets.IBM_CLOUD_SPACE }}
   ICR_NAMESPACE: ${{ secrets.ICR_NAMESPACE }}
-  REGISTRY_HOSTNAME: icr.io
+  REGISTRY_HOSTNAME: us.icr.io
   IMAGE_NAME: ${{ secrets.DOCKER_IMAGE_NAME }}
 
 
