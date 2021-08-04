@@ -11,7 +11,9 @@ on:
 # Environment variables available to all jobs and steps in this workflow
 env:
   IBM_CLOUD_API_KEY: ${{ secrets.IBM_CLOUD_API_KEY }}
-  IBM_CLOUD_REGION: us-south
+  IBM_CLOUD_ORG: ${{ secrets.IBM_CLOUD_ORG }}
+  IBM_CLOUD_REGION: ${{ secrets.IBM_CLOUD_REGION }}
+  IBM_CLOUD_SPACE: ${{ secrets.IBM_CLOUD_SPACE }}
   ICR_NAMESPACE: ${{ secrets.ICR_NAMESPACE }}
   REGISTRY_HOSTNAME: icr.io
   IMAGE_NAME: ${{ secrets.DOCKER_IMAGE_NAME }}
@@ -36,7 +38,8 @@ jobs:
       # Authenticate with IBM Cloud CLI
       - name: Authenticate with IBM Cloud CLI
         run: |
-          ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" -r "${IBM_CLOUD_REGION}" -g default
+          ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" -r "${IBM_CLOUD_REGION}" -g Default
+          ibmcloud target -o ${IBM_CLOUD_ORG} -s ${IBM_CLOUD_SPACE} --cf
           ibmcloud cr region-set "${IBM_CLOUD_REGION}"
           ibmcloud cr login
 
