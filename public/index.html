@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Static site homepage</title>
+    <script src="github-sha.js"></script>
 </head>
-<body>
+<body onload="sha()">
 
-If you can read this, you've deployed the static site properly.
+<p>If you can read this, you've deployed the static site properly.</p>
+
+<p>GITHUB _SHA: <span id="github-sha"/></p>
+
+
 
 </body>
 </html>
