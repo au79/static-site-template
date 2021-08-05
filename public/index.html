@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Static site homepage</title>
-    <script src="github-sha.js"></script>
+    <script src="github-vars.js"></script>
 </head>
-<body onload="sha()">
+<body onload="sha(); ref();">
 
 <p>If you can read this, you've deployed the static site properly.</p>
 
-<p>GITHUB_SHA: <span id="github-sha"/></p>
+<p>GITHUB_SHA: <span id="github-sha"></span></p>
 
-<p>GITHUB_REF: <span id="github-ref"/></p>
+<p>GITHUB_REF: <span id="github-ref"></span></p>
 
 
 
